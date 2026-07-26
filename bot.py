@@ -28,12 +28,13 @@ if not TOKEN:
 
 # Загрузка прокси
 PROXY = os.getenv("BOT_PROXY")
-if not PROXY:
-    logger.error("BOT_PROXY не найден! Проверьте .env файл")
-    exit(1)
+session = None
 
-# Вписать тип, адрес и порт прокси
-session = AiohttpSession(proxy=PROXY)
+if PROXY:
+    logger.info(f"Обнаружен прокси, подключение через: {PROXY}")
+    session = AiohttpSession(proxy=PROXY)
+else:
+    logger.info("Прокси не задан, работаем с прямым подключением")
 
 # Настройки бота
 bot = Bot(
