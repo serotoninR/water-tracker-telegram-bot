@@ -1,5 +1,3 @@
-
-```markdown
 # 💧 Water Tracker Telegram Bot
 
 Асинхронный Telegram-бот для расчета индивидуальной нормы воды и трекинга ежедневного водного баланса.
@@ -52,7 +50,7 @@ sudo systemctl enable --now docker
 ```
 
 
-2. **(Опционально) Добавьте пользователя в группу Docker**, чтобы не писать `sudo`:
+2. **(Опционально) Добавьте пользователя в группу Docker:**
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
@@ -75,7 +73,7 @@ nano .env
 ```
 
 
-Вставьте переменные окружения, нажмите `Ctrl + O`, `Enter` для сохранения и `Ctrl + X` для выхода.
+*Вставьте переменные окружения, нажмите `Ctrl + O`, `Enter` для сохранения и `Ctrl + X` для выхода.*
 5. **Соберите и запустите Docker-контейнер:**
 ```bash
 docker build -t water-bot .
@@ -108,9 +106,10 @@ docker run -d --name water-tracker-bot --env-file .env water-bot
 ### 🐍 Локальный запуск без Docker (Python)
 
 ```bash
-# Создание и активация виртуального окружения
+# Создание виртуального окружения
 python -m venv venv
 
+# Активация:
 # Для Linux/macOS:
 source venv/bin/activate
 # Для Windows (PowerShell):
@@ -151,9 +150,5 @@ docker restart water-tracker-bot
 ```bash
 docker stop water-tracker-bot
 docker rm water-tracker-bot
-
-```
-
-
 
 ```
