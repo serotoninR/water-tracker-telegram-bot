@@ -1,21 +1,23 @@
-# Виртуальное окружение (самое важное!)
-venv/
-.venv/
-env/
+# Виртуальное окружение
+**/venv/
+**/.venv/
+**/env/
 
 # Кэш Python
 **/__pycache__/
-*.pyc
+**/*.pyc
+**/*.pyo
+**/*.pyd
 
 # Гит и настройки редактора
-.git/
-.gitignore
-.vscode/
-.idea/
+**/.git/
+**/.gitignore
+**/.vscode/
+**/.idea/
 
-# Логи и временные файлы
-*.log
-.DS_Store
-.txt
-.db
-.env
+# Логи, переменные и базы данных
+**/*.log
+**/.DS_Store
+**/*.txt
+**/*.db
+**/.env
