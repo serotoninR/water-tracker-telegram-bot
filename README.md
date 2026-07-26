@@ -60,7 +60,7 @@ newgrp docker
 
 3. **Клонируйте репозиторий и перейдите в папку:**
 ```bash
-git clone [https://github.com/serotoninR/water-tracker-telegram-bot.git](https://github.com/serotoninR/water-tracker-telegram-bot.git)
+git clone https://github.com/serotoninR/water-tracker-telegram-bot.git
 cd water-tracker-telegram-bot
 
 ```
