@@ -1,0 +1,21 @@
+# Виртуальное окружение (самое важное!)
+venv/
+.venv/
+env/
+
+# Кэш Python
+**/__pycache__/
+*.pyc
+
+# Гит и настройки редактора
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Логи и временные файлы
+*.log
+.DS_Store
+.txt
+.db
+.env
