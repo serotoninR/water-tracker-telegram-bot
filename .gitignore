@@ -1,8 +1,26 @@
-.env
-__pycache__/
-*.pyc
-*.db
-log.txt
-venv/
-.idea/
-.vscode/
+# Переменные окружения и секреты (самое важное!)
+**/.env
+**/.env.*
+
+# База данных и логи
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/*.log
+**/log.txt
+
+# Виртуальное окружение
+**/venv/
+**/.venv/
+**/env/
+
+# Кэш Python и временные файлы
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Настройки IDE и редакторов
+**/.idea/
+**/.vscode/
+**/.DS_Store
