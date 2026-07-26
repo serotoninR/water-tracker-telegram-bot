@@ -1,6 +1,10 @@
+
+```markdown
 # 💧 Water Tracker Telegram Bot
 
 Асинхронный Telegram-бот для расчета индивидуальной нормы воды и трекинга ежедневного водного баланса.
+
+---
 
 ## 🛠 Технологический стек
 
@@ -8,30 +12,148 @@
 * **aiogram 3.x** - асинхронный фреймворк для Telegram Bot API (FSM, Routers, Keyboards)
 * **SQLAlchemy 2.0 (AsyncORM) + aiosqlite** - асинхронная работа с базой данных SQLite
 * **Pydantic v2** - строгая валидация и обработка пользовательского ввода
-* **Docker** - контейнеризация проекта для быстрого деплоя
+* **Docker** - контейнеризация проекта для быстрого и надежного деплоя
 * **python-dotenv** - управление конфигурацией и секретами через файл `.env`
+
+---
 
 ## ⚙️ Функционал
 
 * Расчет индивидуальной суточной нормы воды на основе веса пользователя.
-* Быстрое добавление выпитого объема через интерфейсные кнопки.
+* Быстрое добавление выпитого объема через удобные интерфейсные кнопки.
 * Наглядный прогресс-бар выпитой воды за текущий день.
-* Сохранение истории в SQLite.
+* Сохранение истории и данных пользователей в SQLite.
 * Поддержка работы через прокси.
 
-## 🚀 Запуск проекта
+---
 
-Перед запуском создайте файл `.env` в корне проекта:
-`BOT_TOKEN=ваш_токен_бота`
-`BOT_PROXY=http://user:pass@ip:port`
+## 🚀 Быстрый запуск
+
+### 1. Подготовка конфигурации
+
+Перед запуском в любом окружении создайте файл `.env` в корне проекта:
+
+```env
+BOT_TOKEN=ваш_токен_от_BotFather
+BOT_PROXY=http://user:pass@ip:port  # Необязательно, если нужен прокси
+
+```
+
+---
+
+### 🌐 Развертывание на VPS (Ubuntu 22.04 / Debian)
+
+1. **Установите Git и Docker на сервер:**
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git docker.io
+sudo systemctl enable --now docker
+
+```
+
+
+2. **(Опционально) Добавьте пользователя в группу Docker**, чтобы не писать `sudo`:
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+
+```
+
+
+3. **Клонируйте репозиторий и перейдите в папку:**
+```bash
+git clone [https://github.com/serotoninR/water-tracker-telegram-bot.git](https://github.com/serotoninR/water-tracker-telegram-bot.git)
+cd water-tracker-telegram-bot
+
+```
+
+
+4. **Создайте файл `.env`:**
+```bash
+nano .env
+
+```
+
+
+Вставьте переменные окружения, нажмите `Ctrl + O`, `Enter` для сохранения и `Ctrl + X` для выхода.
+5. **Соберите и запустите Docker-контейнер:**
+```bash
+docker build -t water-bot .
+docker run -d \
+  --name water-tracker-bot \
+  --restart unless-stopped \
+  --env-file .env \
+  water-bot
+
+```
+
+
+*Флаг `--restart unless-stopped` обеспечивает автоматический перезапуск бота при перезагрузке сервера или сбоях.*
+
+---
+
+### 💻 Локальный запуск через Docker
 
 ```bash
-# Вариант 1: Запуск через Docker
+# Сборка образа
 docker build -t water-bot .
+
+# Запуск контейнера
 docker run -d --name water-tracker-bot --env-file .env water-bot
 
-# Вариант 2: Локальный запуск
+```
+
+---
+
+### 🐍 Локальный запуск без Docker (Python)
+
+```bash
+# Создание и активация виртуального окружения
 python -m venv venv
-source venv/bin/activate  # Для Linux/macOS (или venv\Scripts\activate для Windows)
+
+# Для Linux/macOS:
+source venv/bin/activate
+# Для Windows (PowerShell):
+# .\venv\Scripts\Activate.ps1
+
+# Установка зависимостей и запуск
 pip install -r requirements.txt
 python bot.py
+
+```
+
+---
+
+## 📊 Полезные команды для управления (Docker)
+
+* **Просмотр логов в реальном времени:**
+```bash
+docker logs -f water-tracker-bot
+
+```
+
+
+* **Проверить статус контейнера:**
+```bash
+docker ps
+
+```
+
+
+* **Перезапустить бота:**
+```bash
+docker restart water-tracker-bot
+
+```
+
+
+* **Остановить и удалить контейнер:**
+```bash
+docker stop water-tracker-bot
+docker rm water-tracker-bot
+
+```
+
+
+
+```
